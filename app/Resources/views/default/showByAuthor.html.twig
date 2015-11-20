@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for fortune in findAuthor %}
+    <div>{{ fortune.author }}</div>
+    <div>{{ fortune.title }}</div>
+    <div>{{ fortune.content }}</div>
+    <a class="up" href="{{ path("edit", {id:fortune.id}) }}">Edit</a>
+    {% endfor %}
+{% endblock %}

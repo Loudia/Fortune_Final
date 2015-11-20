@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="form">
+    <form class="case" action="/story/{id}/edit" method="post" novalidate>
+      {{ form_widget(form) }}
+    </form>
+  </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+.form {width:30%;margin:auto;}
+input{width:100%; margin-top:10px;}
+textarea{height:30px;}
+</style>
+{% endblock %}

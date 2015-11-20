@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>{{ fortune.author }}</div>
+    <div>{{ fortune.title }}</div>
+    <div>{{ fortune.content }}</div>
+        <a class="up" href="{{ path("edit", {id:fortune.id}) }}">Edit</a>
+      <div class="comments">
+          {% for comment in fortune.comments %}
+            <h3>{{ comment.author }}</h3>
+            <p>{{ comment.content }}</p>
+          {% endfor %}
+      </div>
+
+{% endblock %}

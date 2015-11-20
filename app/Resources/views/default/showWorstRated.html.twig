@@ -1,0 +1,41 @@
+{% block body %}
+<div class="header">
+  <h1>H Y B R I S</h1>
+  <hr>
+  <ul>
+    <li class="choice"><a href="{{ path ("new") }}">Create a story</a></li>
+    <li class="choice"><a href="{{ path ("homepage") }}">All the Stories</a></li>
+    <li class="choice"><a href="{{ path ("best_rated") }}">Top Stories</a></li>
+    <li class="choice"><a href="{{ path ("worst_rated") }}">Worst Stories</a></li>
+  </ul>
+</div>
+{% for fortune in worstQuotes %}
+<div class="article">
+  <div class="title"><a href="{{ path("story", { id: fortune.id }) }}"><h2>{{ fortune.title }}</h2></a></br></div>
+  <p>{{ fortune.content }}</p>
+  <p class="author">De <strong>{{ fortune.author }}</strong> le <strong>{{ fortune.createAt|date("d/n/y H:i") }}</strong></p>
+  <p class="vote"><a class="up" href="{{ path("vote_up", {id:fortune.id}) }}">Upvote +{{ fortune.getUpVote }}</a> <a class="down" href="{{ path("vote_down", {id:fortune.id}) }}">Downvote -{{ fortune.getDownVote }}</a></p>
+</div>
+<div class="space"></div>
+{%endfor%}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+body{font-family:adobe garamond pro;background-color:#E9E6DB;}
+.header hr{width:100%;color:black;margin-bottom: 80px;}
+h1{text-align:center;font-size:2.8em;}
+ul{width:100%;}
+li{list-style:none;display:inline-block;}
+p{line-height:25px;}
+.article{width:650px;margin:auto;text-align:center;padding-bottom:50px;padding-left:10px;padding-right:10px;background-color:#DBE0E6;border:solid 1px #CFD4D9;border-radius:3px;}
+.title{text-align:center;padding-top:50px;}
+.title a{text-decoration:none;color:black;}
+.author{float:right;padding-top:18px;}
+.vote{text-align:initial;padding-top:35px;}
+.vote a{text-decoration:none;}
+.up{color:green;}
+.down{color:red;}
+.space{width:100%;height:60px;}
+</style>
+{% endblock %}
